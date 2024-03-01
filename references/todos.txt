@@ -1,0 +1,4 @@
+Create requirements.txt
+Update readme file
+Reread assignemt for one last time
+Delete this file or just keep it for further steps
