@@ -1,0 +1,15 @@
+[project]
+name = "mystic-merit-match"
+version = "0.0.1"
+description = "A coding challenge"
+readme = "README.md"
+requires-python = ">= 3.8"
+authors = [
+  {name = "Steffen Springer", email = "steffen.springer@posteo.de" }
+]
+license = {file = "LICENSE"}
+
+dependencies = [
+  "pandas"
+]
+
