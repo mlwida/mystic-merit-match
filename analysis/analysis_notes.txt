@@ -1,0 +1,87 @@
+Summary:
+* Data is extremely standardized (e.g. no 'java-developer' and 'java developer')
+* job roles, senorities, languages and degree do match between talents and jobs
+
+This is way too easy ... where is the trap ... :thinking_face:
+
+
+
+####################
+
+
+Jobs
+-----------
+Check job_roles
+['backend-developer' 'business-analyst' 'business-development-manager'
+ 'c-c-developer' 'c-net-developer' 'cloud-engineer' 'consulting'
+ 'content-marketing-manager' 'customer-success-manager' 'data-analyst'
+ 'data-engineer' 'data-scientist' 'devops-engineer' 'engineering-manager'
+ 'frontend-developer' 'full-stack-developer' 'java-developer'
+ 'key-account-manager' 'mobile-developer' 'online-marketing-manager'
+ 'performance-marketing-manager' 'php-developer' 'presales-manager'
+ 'product-owner' 'project-manager' 'qa-engineer' 'sales-manager'
+ 'scrum-master-agile-coach' 'security' 'software-architect'
+ 'system-administrator' 'system-engineer' 'tech-lead']
+Check languages
+['English' 'German']
+Check language ratings
+['B1' 'B2' 'C1' 'C2']
+Check seniorities
+['junior' 'midlevel' 'none' 'senior']
+Min degree:
+['apprenticeship' 'bachelor' 'doctorate' 'master' 'none']
+Max Salary:
+count      2000.000000
+mean      72658.000000
+std        9237.678461
+min       45000.000000
+25%       70000.000000
+50%       70000.000000
+75%       80000.000000
+max      100000.000000
+Name: max_salary, dtype: float64
+
+
+Talents
+-----------
+Check job_roles
+['1st-2nd-3rd-level-support' 'backend-developer' 'business-analyst'
+ 'business-development-manager' 'c-c-developer' 'c-net-developer'
+ 'cloud-engineer' 'cmo-or-head-of-marketing' 'consulting'
+ 'content-marketing-manager' 'copywriter' 'cpo-or-head-of-product'
+ 'cso-or-head-of-sales' 'cto' 'customer-success-manager' 'data-analyst'
+ 'data-engineer' 'data-scientist' 'database-administrator'
+ 'devops-engineer' 'engineering-manager' 'frontend-developer'
+ 'full-stack-developer' 'graphic-designer' 'head-of-data' 'java-developer'
+ 'key-account-manager' 'machine-learning-engineer' 'marketing-team-lead'
+ 'mobile-developer' 'network-engineer' 'online-marketing-manager'
+ 'performance-marketing-manager' 'php-developer' 'presales-manager'
+ 'product-manager' 'product-owner' 'project-manager' 'qa-engineer'
+ 'sales-engineer' 'sales-manager' 'sales-team-lead'
+ 'scrum-master-agile-coach' 'security' 'seo-sea-manager'
+ 'site-reliability-engineer' 'social-media-marketing-manager'
+ 'software-architect' 'system-administrator' 'system-engineer' 'tech-lead'
+ 'ui-ux-designer' 'ux-researcher']
+Check languages
+['Albanian' 'Arabic' 'Armenian' 'Bengalese' 'Bulgarian' 'Chinese'
+ 'Croatian' 'Czech' 'Danish' 'Dutch' 'English' 'Finnish' 'French' 'German'
+ 'Greek' 'Hebrew' 'Hindi' 'Hungarian' 'Italian' 'Japanese' 'Korean'
+ 'Latvian' 'Macedonian' 'Norwegian' 'Persian' 'Polish' 'Portuguese'
+ 'Romanian' 'Russian' 'Serbian' 'Slovak' 'Spanish' 'Swedish' 'Tamil'
+ 'Turkish']
+Check language ratings
+['A1' 'A2' 'B1' 'B2' 'C1' 'C2']
+Seniority
+:['junior' 'midlevel' 'none' 'senior']
+Degree:
+['apprenticeship' 'bachelor' 'doctorate' 'master' 'none']
+Salary:
+count      2000.000000
+mean      71710.889500
+std       21867.684002
+min       25000.000000
+25%       55000.000000
+50%       70000.000000
+75%       86800.000000
+max      137080.000000
+Name: salary_expectation, dtype: float64
