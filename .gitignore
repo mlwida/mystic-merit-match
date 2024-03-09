@@ -161,4 +161,4 @@ cython_debug/
 
 # Additional entries
 # Raw data is immutable
-data/raw
+data_files/raw/*
