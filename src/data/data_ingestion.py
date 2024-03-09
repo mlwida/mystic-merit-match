@@ -5,15 +5,15 @@ import pandas as pd
 from data.data_types import Talent
 from data.data_types import Job
 
-pd.set_option('display.width', 1000)
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', 50)
-pd.set_option('display.max_colwidth', None)
+pd.set_option("display.width", 1000)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.max_rows", 50)
+pd.set_option("display.max_colwidth", None)
 
 
 def read_raw_data():
-    with resources.open_text('data_files.raw', 'data.json') as file:
-        df = pd.read_json(file, orient='records')
+    with resources.open_text("data_files.raw", "data.json") as file:
+        df = pd.read_json(file, orient="records")
     return df
 
 

@@ -13,7 +13,7 @@ class Language:
         self.must_have = must_have
 
     def __repr__(self):
-        return f'Language({self.title},{self.rating},{self.must_have}'
+        return f"Language({self.title},{self.rating},{self.must_have}"
 
 
 class Talent:
@@ -37,24 +37,24 @@ class Talent:
         self.degree = degree
 
     @classmethod
-    def create(cls, raw_json: {}) -> 'Talent':
+    def create(cls, raw_json: {}) -> "Talent":
         """
         Create a new instance from raw json data
         """
         languages = {}
-        for entry in raw_json.get('languages', []):
+        for entry in raw_json.get("languages", []):
             title = entry.get("title", None)
             rating = entry.get("rating", None)
             if title is not None and rating is not None:
                 languages[title] = Language(title, rating, False)
 
-        return cls(languages=languages, job_roles=raw_json.get('job_roles', []),
-                   seniority=raw_json.get('seniority', None),
-                   salary_expectation=raw_json.get('salary_expectation', None), degree=raw_json.get('degree', None))
+        return cls(languages=languages, job_roles=raw_json.get("job_roles", []),
+                   seniority=raw_json.get("seniority", None),
+                   salary_expectation=raw_json.get("salary_expectation", None), degree=raw_json.get("degree", None))
 
     def __repr__(self):
-        return f'Talent({self.languages},{self.job_roles},{self.seniority},' \
-               f'{self.salary_expectation},{self.degree})'
+        return f"Talent({self.languages},{self.job_roles},{self.seniority}," \
+               f"{self.salary_expectation},{self.degree})"
 
 
 class Job:
@@ -78,22 +78,22 @@ class Job:
         self.min_degree = min_degree
 
     @classmethod
-    def create(cls, raw_json: {}) -> 'Job':
+    def create(cls, raw_json: {}) -> "Job":
         """
         Create a new instance from raw json data
         """
         languages = {}
-        for entry in raw_json.get('languages', []):
+        for entry in raw_json.get("languages", []):
             title = entry.get("title", None)
             rating = entry.get("rating", None)
             must_have = entry.get("must_have", False)
             if title is not None and rating is not None:
                 languages[title] = Language(title, rating, must_have)
 
-        return cls(languages=languages, job_roles=raw_json.get('job_roles', []),
-                   seniorities=raw_json.get('seniorities', []),
-                   max_salary=raw_json.get('max_salary', None), min_degree=raw_json.get('min_degree', None))
+        return cls(languages=languages, job_roles=raw_json.get("job_roles", []),
+                   seniorities=raw_json.get("seniorities", []),
+                   max_salary=raw_json.get("max_salary", None), min_degree=raw_json.get("min_degree", None))
 
     def __repr__(self):
-        return f'Talent({self.languages},{self.job_roles},{self.seniorities},' \
-               f'{self.max_salary},{self.min_dgree})'
+        return f"Talent({self.languages},{self.job_roles},{self.seniorities}," \
+               f"{self.max_salary},{self.min_dgree})"
