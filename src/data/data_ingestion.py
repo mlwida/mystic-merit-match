@@ -24,6 +24,16 @@ def parse_talent(df):
 def parse_job(df):
     df["job_parsed"] = df.apply(lambda row: Job.create(row["job"]), 1)
 
+# TODO think about restructuring ... doc needed
+
+def read_and_prepare_raw_data():
+    df = read_raw_data()
+    parse_job(df)
+    parse_talent(df)
+    df["talent"] = df["talent_parsed"]
+    df["job"] = df["job_parsed"]
+    return df.drop(columns=["job_parsed","talent_parsed"])
+
 def find_all_keys(json_data):
     result = []
     if isinstance(json_data, dict):
@@ -32,9 +42,3 @@ def find_all_keys(json_data):
         for item in json_data:
             result.append(find_all_keys(item))
     return result
-
-df = read_raw_data()
-#
-#
-# print(find_all_keys(df["talent"][0]))
-print(find_all_keys(df["job"][0]))
