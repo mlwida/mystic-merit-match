@@ -1,10 +1,3 @@
-from collections import namedtuple
-
-
-# The classes feel here a little bit like overkill, because the raw json structure is not that deeply nested. It is here
-# to increase code readability and have a place to define the standardized data format.
-# Internal list / dict structures are kept most of the time, because this will ease processing later
-
 class Language:
 
     def __init__(self, title: str, rating: str, must_have: bool):
@@ -13,7 +6,7 @@ class Language:
         self.must_have = must_have
 
     def __repr__(self):
-        return f"Language({self.title},{self.rating},{self.must_have}"
+        return f"Language({self.title},{self.rating},{self.must_have})"
 
 
 class Talent:
@@ -47,10 +40,15 @@ class Talent:
             rating = entry.get("rating", None)
             if title is not None and rating is not None:
                 languages[title] = Language(title, rating, False)
+        seniority = raw_json.get("seniority", None)
+        if seniority == "none":
+            seniority = None
+        degree = raw_json.get("degree", None)
+        if degree == "none":
+            degree = None
 
         return cls(languages=languages, job_roles=raw_json.get("job_roles", []),
-                   seniority=raw_json.get("seniority", None),
-                   salary_expectation=raw_json.get("salary_expectation", None), degree=raw_json.get("degree", None))
+                   seniority=seniority, salary_expectation=raw_json.get("salary_expectation", None), degree=degree)
 
     def __repr__(self):
         return f"Talent({self.languages},{self.job_roles},{self.seniority}," \
@@ -90,10 +88,16 @@ class Job:
             if title is not None and rating is not None:
                 languages[title] = Language(title, rating, must_have)
 
+        seniorities = raw_json.get("seniorities", [])
+        seniorities = [None if s == 'none' else s for s in seniorities]
+
+        min_degree = raw_json.get("min_degree", None)
+        if min_degree == "none":
+            min_degree = None
+
         return cls(languages=languages, job_roles=raw_json.get("job_roles", []),
-                   seniorities=raw_json.get("seniorities", []),
-                   max_salary=raw_json.get("max_salary", None), min_degree=raw_json.get("min_degree", None))
+                   seniorities=seniorities, max_salary=raw_json.get("max_salary", None), min_degree=min_degree)
 
     def __repr__(self):
-        return f"Talent({self.languages},{self.job_roles},{self.seniorities}," \
-               f"{self.max_salary},{self.min_dgree})"
+        return f"Job({self.languages},{self.job_roles},{self.seniorities}," \
+               f"{self.max_salary},{self.min_degree})"
