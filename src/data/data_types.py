@@ -1,6 +1,21 @@
+"""
+Contains classes for a representation of the raw data within the program.
+
+During generation from raw json data, some minor preprocessing is performed
+* 'none' is modeled as None
+* language rating is transformed to a dict with key = language title to ease access
+"""
+
+
 class Language:
 
     def __init__(self, title: str, rating: str, must_have: bool):
+        """
+        A language represents a language skill or requirement with a current / minimum rating
+        :param title: name / title of the language
+        :param rating: standardized rating from A1 to C2
+        :param must_have: only in context of a job
+        """
         self.title = title
         self.rating = rating
         self.must_have = must_have
