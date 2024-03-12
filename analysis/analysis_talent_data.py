@@ -1,11 +1,15 @@
 import pandas as pd
-from data import data_ingestion
+
+from data import data_io
 
 # Hacky script for quick manual analysis, hence no docs here
+pd.set_option("display.width", 1000)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.max_rows", 50)
+pd.set_option("display.max_colwidth", None)
 
-df = data_ingestion.read_raw_data()
-data_ingestion.parse_talent(df)
-talent_df = pd.DataFrame({"talent": df["talent_parsed"]})
+talent_df = data_io.read_and_prepare_raw_data(drop_source=False)
+talent_df = talent_df.loc[:, ["talent", "talent_source", "label"]]
 
 
 def flatten_list(list_of_lists):

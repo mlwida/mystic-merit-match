@@ -10,6 +10,8 @@ authors = [
 license = {file = "LICENSE"}
 
 dependencies = [
-  "pandas"
+  "pandas", # data wrangling
+  "scikit-learn", # model training
+  "skops" # safe persistence format
 ]
 

@@ -1,11 +1,15 @@
 import pandas as pd
-from data import data_ingestion
+
+from data import data_io
 
 # Hacky script for quick manual analysis, hence no docs here
+pd.set_option("display.width", 1000)
+pd.set_option("display.max_columns", None)
+pd.set_option("display.max_rows", 50)
+pd.set_option("display.max_colwidth", None)
 
-df = data_ingestion.read_raw_data()
-data_ingestion.parse_job(df)
-job_df = pd.DataFrame({"job": df["job_parsed"]})
+job_df = data_io.read_and_prepare_raw_data(drop_source=False)
+job_df = job_df.loc[:, ["job", "job_source", "label"]]
 
 
 def flatten_list(list_of_lists):
