@@ -1,17 +1,16 @@
 """
-Contains classes for a representation of the raw data within the program.
-
-During generation from raw json data, some minor preprocessing is performed
-* 'none' is modeled as None
-* language rating is transformed to a dict with key = language title to ease access
+Contains classes for a representation of the raw data as an intermediate step for actual feature generation.
 """
 
 
 class Language:
+    """
+    A class representing a language skill or requirement
+    """
 
     def __init__(self, title: str, rating: str, must_have: bool):
         """
-        A language represents a language skill or requirement with a current / minimum rating
+        Initialize a new language object
         :param title: name / title of the language
         :param rating: standardized rating from A1 to C2
         :param must_have: only in context of a job
@@ -25,11 +24,14 @@ class Language:
 
 
 class Talent:
+    """
+    A class representing a Talent (job candidate).
+    """
 
     def __init__(self, languages: dict[Language], job_roles: list[str], seniority: str, salary_expectation: int,
                  degree: str) -> None:
         """
-        A Talent represents a potential job candidate
+        Initialize a new Talent object.
 
         :param languages: language skills of candidate with key = language title
         :param job_roles: interested in these job roles
@@ -47,7 +49,14 @@ class Talent:
     @classmethod
     def create(cls, raw_json: {}) -> "Talent":
         """
-        Create a new instance from raw json data
+        Create a new instance of Talent from raw json data.
+
+        During generation, some minor preprocessing is performed
+        * 'none' is replaced as None
+        * languages are managed as a dict with key = 'language title' to ease access
+
+        :param raw_json: json-dictionary represent a talent from the input data
+        :return: instance of Talent
         """
         languages = {}
         for entry in raw_json.get("languages", []):
@@ -71,11 +80,14 @@ class Talent:
 
 
 class Job:
+    """
+    A class representing a Job.
+    """
 
     def __init__(self, languages: dict[Language], job_roles: list[str], seniorities: list[str], max_salary: int,
                  min_degree: str) -> None:
         """
-        An available job
+        Initialize a new Job object.
 
         :param languages: language requirements with key = language title
         :param job_roles: applicable job roles
@@ -93,7 +105,14 @@ class Job:
     @classmethod
     def create(cls, raw_json: {}) -> "Job":
         """
-        Create a new instance from raw json data
+        Create a new instance of Job from raw json data.
+
+        During generation, some minor preprocessing is performed
+        * 'none' is replaced by None
+        * languages are managed as a dict with key = 'language title' to ease access
+
+        :param raw_json: json dictionary represent a job from the input data
+        :return: instance of Job
         """
         languages = {}
         for entry in raw_json.get("languages", []):
