@@ -15,6 +15,9 @@ class Search:
     def match(self, talent: dict, job: dict) -> dict:
         """
         Calculates the prediction of being a match for a given talent and job.
+
+        The returned score is a representation of the model's confidence in the predicted label.
+
         :param talent: raw json dictionary representing a talent
         :param job: raw json dictionary representing a job
         :return: dictionary with unchanged talent and job plus a predicted 'label' along with a 'score'
@@ -36,6 +39,9 @@ class Search:
     def match_bulk(self, talents: list[dict], jobs: list[dict]) -> list[dict]:
         """
         Calculates the prediction of being a match for all combinations of given talents and jobs.
+
+        The returned score is a representation of the model's confidence in the predicted label.
+
         :param talents: list of raw json dictionaries each representing a talent
         :param jobs: list of raw json dictionaries each representing a job
         :return: list of dictionaries each with one unchanged combination plus a predicted 'label' along with a 'score'
