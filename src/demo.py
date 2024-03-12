@@ -13,7 +13,7 @@ def pretty_printing_search_result(result: dict) -> str:
     print("\n######################################\n# Search Results \n######################################")
     counter = 1
     for entry in result:
-        formatted_map = '\n'.join([f'{k}:{v}' for k, v in entry.items()])
+        formatted_map = '\n'.join([f'{k}: {v}' for k, v in entry.items()])
         print(f"Entry {counter}\n{formatted_map}\n")
         counter += 1
 
