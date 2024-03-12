@@ -71,7 +71,7 @@ def write_data_frame_to_resources(df: pd.DataFrame, package_name: str, file_name
     try:
         df.to_csv(path.as_posix(), index=False)
     except OSError:
-        print(f"Failed to write DataFrame to {path}.")
+        print(f"Failed to write DataFrame to {path}")
         raise
     else:
-        print(f"Successfully wrote DataFrame to {path}.")
+        print(f"Successfully wrote DataFrame to {path}")

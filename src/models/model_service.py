@@ -72,7 +72,7 @@ class MysticMeritModel(Model):
         job = Job.create(job_raw)
 
         feature_extractor = FeatureExtractorManager()
-        df_app = pd.DataFrame([feature_extractor.extract_features(talent,job)])
+        df_app = pd.DataFrame([feature_extractor.extract_features(talent, job)])
 
         # predict_proba is not defined in BaseEstimator ... example of duck typing approach in scikit-learn
         predict_prob = self.classifier.predict_proba(df_app)[0]
@@ -111,6 +111,9 @@ class MysticMeritModel(Model):
         return f"MysticMeritModel({self.classifier.__repr__()})"
 
 
+MODEL_FILE_NAME = "matching_model.skops"
+
+
 def train_and_save_model() -> None:
     """
     Trains and saves a machine learning model based on internally specified data sources.
@@ -134,7 +137,7 @@ def train_and_save_model() -> None:
         lambda row: feature_extractor.extract_features(talent=row["talent"], job=row["job"]), 1)))
     # reattach label
     df["label"] = raw_data["label"]
-    write_data_frame_to_resources(df,"data_files.processed", "data_final.csv")
+    write_data_frame_to_resources(df, "data_files.processed", "data_final.csv")
 
     # shuffle rows. Should not matter, but I always get an icky feeling when seeing sorting by label
     df = df.sample(frac=1)
@@ -148,7 +151,7 @@ def train_and_save_model() -> None:
 
     model_as_bytes = sio.dumps(clf)
     # Writing into resources is not good style, let's do it here to ease program access
-    path = resources.path("model_files", "matching_model.ser")
+    path = resources.path("model_files", MODEL_FILE_NAME)
     try:
         with open(path.as_posix(), "wb") as file:
             file.write(model_as_bytes)
@@ -166,7 +169,7 @@ def load_model() -> Model:
     :return: instance of model is available
     :raises OSError: If loading was not possible
     """
-    path = resources.path("model_files", "matching_model.ser")
+    path = resources.path("model_files", MODEL_FILE_NAME)
     try:
         with open(path, "rb") as file:
             model_as_bytes = file.read()
