@@ -54,7 +54,7 @@ def read_and_prepare_raw_data(drop_source: bool = True, write_interim_data: bool
     return df
 
 
-def write_data_frame_to_resources(df: pd.DataFrame, package_name: str, file_name: str) -> None:  # TODO doc
+def write_data_frame_to_resources(df: pd.DataFrame, package_name: str, file_name: str) -> None:
     """
     Write the specified DataFrame to the specified Path.
 
