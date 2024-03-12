@@ -11,6 +11,8 @@ source .venv/bin/activate
 python -m pip install .
 ```
 
+For the used specific package versions check _requirements.txt_.
+
 ## More
 
 Project layout inspired by [Cookie Cutter](https://drivendata.github.io/cookiecutter-data-science/)
